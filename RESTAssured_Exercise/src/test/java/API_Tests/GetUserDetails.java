@@ -77,7 +77,7 @@ public class GetUserDetails {
             .contentType(ContentType.JSON)
             .body("status", equalTo("Success"))
             .body("data.userId", equalTo(userId))
-            .body("data.status", anyOf(equalTo("active"), equalTo("new"), equalTo("rejected")))
+            .body("data.status", (equalTo("active")))
             .body("data.title", equalTo("Mr"))
             .body("data.firstName", equalTo("John"))
             .body("data.lastName", equalTo("Doe"))
