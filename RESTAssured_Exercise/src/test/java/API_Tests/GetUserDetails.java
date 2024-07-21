@@ -15,18 +15,17 @@ import static org.hamcrest.Matchers.*;
 import org.json.JSONObject;
 
 public class GetUserDetails {
-
-	@BeforeClass
-    public void setup() {
-        RestAssured.baseURI = "https://mzo5slmo45.execute-api.eu-west-2.amazonaws.com/v1";
-    }
 	private static final String BASE_URL = "https://mzo5slmo45.execute-api.eu-west-2.amazonaws.com/v1";
 	private static final String API_KEY = "GombImxOhMCa8AqMmNM9KEFwaSHSFHty";
 
+	@BeforeClass
+       public void setup() {
+        RestAssured.baseURI = "https://mzo5slmo45.execute-api.eu-west-2.amazonaws.com/v1";
+        }
+	
 	@Test
 	@Severity(SeverityLevel.CRITICAL)
 	public void testGetUserDetails_ValidUserId() {
-		RestAssured.baseURI = BASE_URL;
 
 		given()
 		.header("Authorization", "Bearer " + API_KEY)
@@ -43,7 +42,6 @@ public class GetUserDetails {
 	@Test
 	@Severity(SeverityLevel.CRITICAL)
 	public void testGetUserDetails_InValidUserId() {
-		RestAssured.baseURI = BASE_URL;
 
 		given()
 		.header("Authorization", "Bearer " + API_KEY)
@@ -56,7 +54,6 @@ public class GetUserDetails {
 	@Test
 	@Severity(SeverityLevel.CRITICAL)
 	public void testGetUserDetails_NoUserId() {
-		RestAssured.baseURI = BASE_URL;
 
 		given()
 		.header("Authorization", "Bearer " + API_KEY)
@@ -68,7 +65,7 @@ public class GetUserDetails {
 	
 	@Test
 	@Severity(SeverityLevel.CRITICAL)
-    public void testGetUserDetailsResponseFormat() {
+        public void testGetUserDetailsResponseFormat() {
         String userId = createUserAndGetUserId();
 
         given()
